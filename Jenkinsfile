@@ -9,6 +9,12 @@ pipeline {
     }
 
     stages {
+        stage('Welcome') {
+            steps {
+                sh 'HELLO'
+            }
+        }
+
         stage('Test Docker') {
             steps {
                 sh 'docker --version'
