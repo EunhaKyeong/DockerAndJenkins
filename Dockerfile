@@ -1,5 +1,10 @@
 FROM ubuntu:24.04
 
+#Git
+RUN apt-get update && \
+    apt-get install -y git && \
+    rm -rf /var/lib/apt/lists/* \
+
 #JDK: zulu 17 Latest
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 ARG ZULU_REPO_VER=1.0.0-3
