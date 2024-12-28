@@ -11,6 +11,14 @@ pipeline {
     }
 
     stages {
+        stage('Test Docker') {
+            steps {
+                sh 'docker --version'
+            }
+        }
+    }
+
+    stages {
         stage('Get git tag') {
             steps {
                 script {
