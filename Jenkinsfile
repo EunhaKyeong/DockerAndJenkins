@@ -43,7 +43,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: 'SECRETFILE', variable: 'LOCAL_PROPERTIES_FILE')]) {
-                        sh "cp $LOCAL_PROPERTIES_FILE /Users/ehkyeong/.jenkins/workspace/Docker-Example"
+                        sh "cp $LOCAL_PROPERTIES_FILE /Users/ehkyeong/.jenkins/workspace/Docker-Example/local.properties"
                     }
                 }
 //                 sh 'cp -R /opt/aos_evpedia/keystore /var/lib/jenkins/workspace/aos_evpedia/app'
