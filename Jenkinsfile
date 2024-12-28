@@ -4,8 +4,6 @@ pipeline {
     }
 
     environment {
-//         JAVA_HOME = "${env.JAVA_ZULU_17}"
-//         PATH = "${JAVA_HOME}/bin:${env.PATH}"
         GIT_TAG = ''
         BUILD_TYPE = ''
     }
