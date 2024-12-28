@@ -47,17 +47,17 @@ RUN gradle --version
 #Build platform: 34, 35
 #Build tool: 34.0.0, 35.0.0
 RUN cd ~ \
-    && mkdir android_sdk \
-    && cd android_sdk \
+    && mkdir /opt/android_sdk \
+    && cd /opt/android_sdk \
     && wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip \
     && unzip commandlinetools-linux-11076708_latest.zip \
     && cd cmdline-tools \
     && mkdir latest \
     && mv bin/ lib/ NOTICE.txt source.properties latest/. \
     && cd ~ \
-    && y | android_sdk/cmdline-tools/latest/bin/sdkmanager --install "cmdline-tools;9.0" \
-    && android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-34" \
-    && android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-35" \
-    && android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "build-tools;34.0.0" \
-    && android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "build-tools;35.0.0" \
-    && rm -r android_sdk/commandlinetools-linux-11076708_latest.zip
+    && y | /opt/android_sdk/cmdline-tools/latest/bin/sdkmanager --install "cmdline-tools;9.0" \
+    && /opt/android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-34" \
+    && /opt/android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-35" \
+    && /opt/android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "build-tools;34.0.0" \
+    && /opt/android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "build-tools;35.0.0" \
+    && rm -r /opt/android_sdk/commandlinetools-linux-11076708_latest.zip
