@@ -1,7 +1,8 @@
 pipeline {
-    agent {
-        docker { image 'android-docker:latest' }
-    }
+//     agent {
+//         docker { image 'android-docker:latest' }
+//     }
+    agent any
 
     environment {
 //         JAVA_HOME = "${env.JAVA_ZULU_17}"
