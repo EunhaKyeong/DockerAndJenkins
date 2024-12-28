@@ -42,8 +42,8 @@ pipeline {
         stage('Copy files') {
             steps {
                 script {
-                    withCredentials([file(credentialsId: 'Local-Properties', variable: 'LOCAL_PROPERTIES_FILE')]) {
-                        sh "cp $SECRET_FILE /Users/ehkyeong/.jenkins/workspace/Docker-Example"
+                    withCredentials([file(credentialsId: 'SECRETFILE', variable: 'LOCAL_PROPERTIES_FILE')]) {
+                        sh "cp $LOCAL_PROPERTIES_FILE /Users/ehkyeong/.jenkins/workspace/Docker-Example"
                     }
                 }
 //                 sh 'cp -R /opt/aos_evpedia/keystore /var/lib/jenkins/workspace/aos_evpedia/app'
