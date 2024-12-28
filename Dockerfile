@@ -55,6 +55,7 @@ RUN cd ~ \
     && mkdir latest \
     && mv bin/ lib/ NOTICE.txt source.properties latest/. \
     && cd ~ \
+    && yes | /opt/android_sdk/cmdline-tools/latest/bin/sdkmanager --licenses \
     && y | /opt/android_sdk/cmdline-tools/latest/bin/sdkmanager --install "cmdline-tools;9.0" \
     && /opt/android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-34" \
     && /opt/android_sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-35" \
