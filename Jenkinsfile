@@ -12,6 +12,8 @@ pipeline {
         stage('Get git tag') {
             steps {
                 script {
+                    sh 'git config --global --add safe.directory /Users/ehkyeong/.jenkins/workspace/Docker-Example'
+
                     GIT_TAG = sh(script: 'git describe --tags --exact-match', returnStdout: true).trim()
 
                     echo "GIT_TAG: ${GIT_TAG}"
