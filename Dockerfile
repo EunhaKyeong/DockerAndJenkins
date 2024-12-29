@@ -4,8 +4,8 @@ FROM ubuntu:24.04
 RUN apt-get update && \
     apt-get install -y git && \
     rm -rf /var/lib/apt/lists/* && \
-    git config --global user.name "EunhaKyeong" && \
-    git config --global user.email "kyeongeh424@gmail.com"
+    git config --system user.name "EunhaKyeong" && \
+    git config --system user.email "kyeongeh424@gmail.com"
 
 #JDK: zulu 17 Latest
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
@@ -28,22 +28,17 @@ RUN apt-get -qq update && \
 
 ENV JAVA_HOME=/usr/lib/jvm/zulu17
 
-#Gradle: 8.12
+#Gradle: 8.9
 RUN apt-get update && apt-get install -y \
     unzip \
     wget && \
     rm -rf /var/lib/apt/lists/*
-
 ENV GRADLE_HOME=/opt/gradle
-ENV GRADLE_VERSION=8.12
-ARG GRADLE_DOWNLOAD_SHA256=7a00d51fb93147819aab76024feece20b6b84e420694101f276be952e08bef03
+ENV GRADLE_VERSION=8.9
 RUN wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" && \
-    echo "${GRADLE_DOWNLOAD_SHA256} *gradle.zip" | sha256sum --check - && \
     unzip gradle.zip && rm gradle.zip && \
     mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" && \
     ln --symbolic "${GRADLE_HOME}/bin/gradle" /usr/bin/gradle
-
-RUN gradle --version
 
 #Android SDK: commandlinetools-linux-11076708_latest
 #Build platform: 34, 35
