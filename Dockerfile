@@ -3,7 +3,9 @@ FROM ubuntu:24.04
 #Git
 RUN apt-get update && \
     apt-get install -y git && \
-    rm -rf /var/lib/apt/lists/* \
+    rm -rf /var/lib/apt/lists/* && \
+    git config --global user.name "EunhaKyeong" && \
+    git config --global user.email "kyeongeh424@gmail.com"
 
 #JDK: zulu 17 Latest
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
