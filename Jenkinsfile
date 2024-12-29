@@ -1,7 +1,9 @@
 pipeline {
-    agent {
-        docker { image 'android-docker:latest' }
-    }
+//     agent {
+//         docker { image 'android-docker:latest' }
+//     }
+
+    agent any
 
     environment {
         GIT_TAG = ''
@@ -9,6 +11,17 @@ pipeline {
     }
 
     stages {
+        stage('Get git user info') {
+            script {
+                // Git 사용자 정보 확인
+                def gitUserName = sh(script: 'git config --global user.name || echo "No Git Username Configured"', returnStdout: true).trim()
+                def gitUserEmail = sh(script: 'git config --global user.email || echo "No Git Email Configured"', returnStdout: true).trim()
+
+                // Git 사용자 정보 출력
+                echo "Git User Name: ${gitUserName}"
+                echo "Git User Email: ${gitUserEmail}"
+            }
+        }
 //         stage('Get git tag') {
 //             steps {
 //                 script {
