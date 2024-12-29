@@ -1,9 +1,7 @@
 pipeline {
-//     agent {
-//         docker { image 'android-docker:latest' }
-//     }
-
-    agent any
+    agent {
+        docker { image 'android-docker:latest' }
+    }
 
     environment {
         GIT_TAG = ''
