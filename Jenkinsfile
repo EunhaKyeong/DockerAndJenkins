@@ -18,13 +18,13 @@ pipeline {
                 }
             }
         }
-    }
 
-    stage('Copy files') {
-        steps {
-            script {
-                withCredentials([file(credentialsId: 'local-properties', variable: 'LOCAL_PROPERTIES_FILE')]) {
-                    sh "cp $LOCAL_PROPERTIES_FILE /var/jenkins_home/workspace/dind-example/local.properties"
+        stage('Copy files') {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: 'local-properties', variable: 'LOCAL_PROPERTIES_FILE')]) {
+                        sh "cp $LOCAL_PROPERTIES_FILE /var/jenkins_home/workspace/dind-example/local.properties"
+                    }
                 }
             }
         }
