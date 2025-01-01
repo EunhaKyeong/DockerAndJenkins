@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'android-docker:latest' }
+        docker { image 'project-docker:latest' }
     }
 
 //     agent any
@@ -25,17 +25,17 @@ pipeline {
 //             }
 //         }
 
-        stage('Get git tag') {
-            steps {
-                script {
-                    sh 'git config --global --add safe.directory /Users/ehkyeong/.jenkins/workspace/Docker-Example'
-
-                    GIT_TAG = sh(script: 'git describe --tags --exact-match', returnStdout: true).trim()
-
-                    echo "GIT_TAG: ${GIT_TAG}"
-                }
-            }
-        }
+//         stage('Get git tag') {
+//             steps {
+//                 script {
+//                     sh 'git config --global --add safe.directory /Users/ehkyeong/.jenkins/workspace/Docker-Example'
+//
+//                     GIT_TAG = sh(script: 'git describe --tags --exact-match', returnStdout: true).trim()
+//
+//                     echo "GIT_TAG: ${GIT_TAG}"
+//                 }
+//             }
+//         }
 
 //         stage('Check build type') {
 //             steps {
@@ -55,38 +55,38 @@ pipeline {
 //             }
 //         }
 
-        stage('Copy files') {
-            steps {
-                script {
-                    withCredentials([file(credentialsId: 'SECRETFILE', variable: 'LOCAL_PROPERTIES_FILE')]) {
-                        sh "cp $LOCAL_PROPERTIES_FILE /Users/ehkyeong/.jenkins/workspace/Docker-Example/local.properties"
-                    }
-                }
+//         stage('Copy files') {
+//             steps {
+//                 script {
+//                     withCredentials([file(credentialsId: 'SECRETFILE', variable: 'LOCAL_PROPERTIES_FILE')]) {
+//                         sh "cp $LOCAL_PROPERTIES_FILE /Users/ehkyeong/.jenkins/workspace/Docker-Example/local.properties"
+//                     }
+//                 }
 //                 sh 'cp -R /opt/aos_evpedia/keystore /var/lib/jenkins/workspace/aos_evpedia/app'
 //                 sh 'cp -R /opt/aos_evpedia/local.properties /var/lib/jenkins/workspace/aos_evpedia'
 //                 sh 'cp -R /opt/aos_evpedia/google-services.json /var/lib/jenkins/workspace/aos_evpedia/app'
-            }
-        }
+//             }
+//         }
 
-        stage('Clean') {
-            steps {
-                sh './gradlew clean'
-            }
-        }
+//         stage('Clean') {
+//             steps {
+//                 sh './gradlew clean'
+//             }
+//         }
 
-        stage('Test') {
-            steps {
-                sh './gradlew test'
-            }
-        }
+//         stage('Test') {
+//             steps {
+//                 sh './gradlew test'
+//             }
+//         }
 
-        stage('Build and deploy') {
-            steps {
-                script {
-                     sh "./gradlew assembleDebug"
-                }
-            }
-        }
+//         stage('Build and deploy') {
+//             steps {
+//                 script {
+//                      sh "./gradlew assembleDebug"
+//                 }
+//             }
+//         }
 
 //         stage('Build and deploy') {
 //             steps {
