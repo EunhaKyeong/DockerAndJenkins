@@ -28,6 +28,18 @@ pipeline {
                 }
             }
         }
+
+        stage('Clean') {
+            steps {
+                sh './gradlew clean'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh './gradlew test'
+            }
+        }
     }
 
     post {
