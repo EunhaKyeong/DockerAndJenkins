@@ -44,7 +44,7 @@ pipeline {
         stage('Build and deploy') {
             steps {
                 script {
-                     sh "./gradlew assembleDebug"
+                     sh "./gradlew assembleRelease"
                 }
             }
         }
