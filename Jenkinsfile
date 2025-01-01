@@ -40,6 +40,14 @@ pipeline {
                 sh './gradlew test'
             }
         }
+
+        stage('Build and deploy') {
+            steps {
+                script {
+                     sh "./gradlew assembleDebug"
+                }
+            }
+        }
     }
 
     post {
